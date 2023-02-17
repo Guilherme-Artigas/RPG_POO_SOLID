@@ -1,17 +1,26 @@
 import Race from './Race';
 
 export default class Dwarf extends Race {
-  private dwarfLifePoints: number;
+  private _dwarfLifePoints: number;
+  static numberOfIntances = 0;
   
   constructor(
     private dwarfName: string,
     private dwarfDexterity: number,
   ) {
     super(dwarfName, dwarfDexterity);
-    this.dwarfLifePoints = this.lifePoints;
+    this._dwarfLifePoints = 80;
+    Dwarf.numberOfIntances += 1;
   }
 
-  private set lifePoints(value: number) { this.dwarfLifePoints = value; }
+  static createdRacesInstances(): number { return this.numberOfIntances; }
+  
+  set updateLifePoints(value: number) {
+    if (value > 80) {
+      throw new Error('Valor máximo de 80 pontos, excedido!');
+    }
+    this._dwarfLifePoints = value;
+  }
 
-  get maxLifePoints(): number { return this.dwarfLifePoints; }
+  get maxLifePoints(): number { return this._dwarfLifePoints; }
 }
