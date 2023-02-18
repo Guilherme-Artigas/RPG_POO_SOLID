@@ -34,7 +34,6 @@ export default class Character implements Fighter {
   get strength(): number { return this._strength; }
   get defense(): number { return this._defense; }
   get dexterity(): number { return this._dexterity; }
-  // Um Character possui um atributo energy, que pode ser lido mas não pode ser setado nem ter um de seus valores internos alterados
   get energy(): Energy {
     return { type_: this._energy.type_, amount: this._energy.amount };
   }
