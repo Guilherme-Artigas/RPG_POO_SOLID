@@ -21,7 +21,6 @@ export default class Moster implements SimpleFighter {
     }
 
     return this._lifePoints;
-    // Um Character pode atacar um Monster, e o Monster receberá de dano o valor do atributo strength do Character que o ataca
   }
 
   attack(enemy: Fighter): void {
