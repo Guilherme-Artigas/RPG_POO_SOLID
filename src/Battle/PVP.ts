@@ -1,13 +1,11 @@
-import Battle from './Battle';
 import Fighter, { SimpleFighter } from '../Fighter';
+import Battle from './Battle';
 
 export default class PVP extends Battle {
   constructor(
     private _playerOne: SimpleFighter | Fighter,
     private _playerTwo: SimpleFighter | Fighter,
-  ) { 
-    super(_playerOne);
-  }
+  ) { super(_playerOne); }
 
   checkLife() {
     if (
