@@ -16,16 +16,16 @@ export default class Character implements Fighter {
   
   constructor(private name: string) {
     this._dexterity = getRandomInt(1, 10);
-    this._race = new Elf(name, this._dexterity);
-    this._archetype = new Mage(name);
-    this._maxLifePoints = this._race.maxLifePoints / 2;
-    this._lifePoints = this._race.maxLifePoints;
     this._strength = getRandomInt(1, 10);
     this._defense = getRandomInt(1, 10);
+    this._archetype = new Mage(name);
     this._energy = {
       type_: this._archetype.energyType,
       amount: getRandomInt(1, 10),
     };
+    this._race = new Elf(name, this._dexterity);
+    this._maxLifePoints = this._race.maxLifePoints / 2;
+    this._lifePoints = this._race.maxLifePoints;
   }
 
   get race(): Race { return this._race; }
@@ -51,21 +51,25 @@ export default class Character implements Fighter {
   attack(enemy: SimpleFighter): void { enemy.receiveDamage(this._strength); }
 
   levelUp(): void {
-    this._lifePoints += getRandomInt(1, 10);
     this._maxLifePoints += getRandomInt(1, 10);
     this._strength += getRandomInt(1, 10); 
     this._dexterity += getRandomInt(1, 10);
     this._defense += getRandomInt(1, 10);
     this._energy.amount = 10;
-
+    
     if (this._maxLifePoints > this._race.maxLifePoints) {
       this._maxLifePoints = this._race.maxLifePoints;
     }
-
-    this._lifePoints = this._race.maxLifePoints;
+    
+    if (this._lifePoints !== this._race.maxLifePoints) {
+      this._lifePoints = this._race.maxLifePoints;
+    }
   }
 
   special(): void {
-    this._strength += getRandomInt(1, 2);
+    this._maxLifePoints += getRandomInt(1, 3);
+    this._strength += getRandomInt(1, 3);
+    this._dexterity += getRandomInt(1, 3);
+    this._defense += getRandomInt(1, 3);
   }
 }
