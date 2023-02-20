@@ -14,13 +14,6 @@ export default class Halfling extends Race {
   }
 
   static createdRacesInstances(): number { return this.numberOfInstances; }
-  
-  set updateLifePoints(value: number) {
-    if (value > 60) {
-      throw new Error('Valor máximo de 60 pontos, excedido!');
-    }
-    this.halflingLifePoints = value;
-  }
 
   get maxLifePoints(): number { return this.halflingLifePoints; }
 }

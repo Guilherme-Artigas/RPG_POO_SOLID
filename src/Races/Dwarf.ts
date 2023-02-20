@@ -14,13 +14,6 @@ export default class Dwarf extends Race {
   }
 
   static createdRacesInstances(): number { return this.numberOfIntances; }
-  
-  set updateLifePoints(value: number) {
-    if (value > 80) {
-      throw new Error('Valor máximo de 80 pontos, excedido!');
-    }
-    this._dwarfLifePoints = value;
-  }
 
   get maxLifePoints(): number { return this._dwarfLifePoints; }
 }
